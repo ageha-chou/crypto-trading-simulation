@@ -1,7 +1,7 @@
 package com.diepnn.cryptotradingsimulation.dto.response;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.Instant;
 
 public record AggregatedPriceDTO(
         String symbol,
@@ -9,6 +9,6 @@ public record AggregatedPriceDTO(
         BigDecimal ask,
         String bidSource,
         String askSource,
-        OffsetDateTime updatedAt
+        Instant updatedAt
 ) {
 }

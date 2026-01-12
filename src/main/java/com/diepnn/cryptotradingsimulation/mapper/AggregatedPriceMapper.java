@@ -15,8 +15,7 @@ public class AggregatedPriceMapper {
                 ap.getAskPrice(),
                 ap.getBidPriceSource().toString(),
                 ap.getAskPriceSource().toString(),
-                ap.getUpdatedAt().atOffset(ZoneOffset.UTC)
+                ap.getUpdatedAt()
         );
-
     }
 }
