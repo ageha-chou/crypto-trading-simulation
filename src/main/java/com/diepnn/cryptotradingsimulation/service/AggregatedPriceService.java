@@ -5,6 +5,8 @@ import com.diepnn.cryptotradingsimulation.client.huobi.HuobiClient;
 import com.diepnn.cryptotradingsimulation.domain.entity.AggregatedPrice;
 import com.diepnn.cryptotradingsimulation.domain.entity.TradingPair;
 import com.diepnn.cryptotradingsimulation.dto.CommonPriceDTO;
+import com.diepnn.cryptotradingsimulation.dto.response.AggregatedPriceDTO;
+import com.diepnn.cryptotradingsimulation.mapper.AggregatedPriceMapper;
 import com.diepnn.cryptotradingsimulation.repository.AggregatedPriceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,7 @@ public class AggregatedPriceService {
     private final HuobiClient huobiClient;
     private final TradingPairService tradingPairService;
     private final AggregatedPriceRepository aggregatedPriceRepository;
+    private final AggregatedPriceMapper map;
 
     /**
      * Refreshes and persists the latest aggregated prices for all supported trading pairs.
@@ -100,5 +103,9 @@ public class AggregatedPriceService {
         }
 
         aggregated.setUpdatedAt(LocalDateTime.now());
+    }
+
+    public List<AggregatedPriceDTO> getAll() {
+        return aggregatedPriceRepository.findAll().stream().map(map::toDTO).toList();
     }
 }
