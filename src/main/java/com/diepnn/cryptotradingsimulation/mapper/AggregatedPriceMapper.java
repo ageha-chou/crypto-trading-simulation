@@ -4,8 +4,6 @@ import com.diepnn.cryptotradingsimulation.domain.entity.AggregatedPrice;
 import com.diepnn.cryptotradingsimulation.dto.response.AggregatedPriceDTO;
 import org.springframework.stereotype.Component;
 
-import java.time.ZoneOffset;
-
 @Component
 public class AggregatedPriceMapper {
     public AggregatedPriceDTO toDTO(AggregatedPrice ap) {

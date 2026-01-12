@@ -126,4 +126,8 @@ public class TradingTransactionService {
         TradingTransaction saved = transactionRepository.save(tx);
         return mapper.toDTO(saved);
     }
+
+    public List<TradeResult> getTransactionsByUserId(Long userId) {
+        return transactionRepository.findAllByUserId(userId).stream().map(mapper::toDTO).toList();
+    }
 }
